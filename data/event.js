@@ -44,7 +44,7 @@ const evento = {
    REGALOS
 ========================= */
   regalos: {
-    titulo: "Sugerencia de Regalos",
+    titulo: "Un Detalle Especial",
     mensaje:
       "Tu presencia hará de este día algo muy especial, siendo para mí el mejor regalo. Si deseas acompañarme con un detalle adicional, te comparto esta sugerencia con mucho cariño.",
 
