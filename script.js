@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
   line.classList.add("line-progress");
   timeline.appendChild(line);
 
-  const speed = 2; // px por frame
+  const speed = 4; // px por frame
 
   let currentHeight = 0;
   let animating = false;
