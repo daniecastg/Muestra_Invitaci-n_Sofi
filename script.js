@@ -161,29 +161,28 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const timeline = document.querySelector(".timeline");
   if (!timeline) return;
-
   const points = document.querySelectorAll(".timeline-point");
   const items = document.querySelectorAll(".timeline-item");
-
   // Crear la línea animada
   const line = document.createElement("div");
   line.classList.add("line-progress");
   timeline.appendChild(line);
 
-  const speed = 4; // px por frame
-
+  // Duración total de la animación
+  const duracionAnimacion = 5000; // 5 segundos
   let currentHeight = 0;
   let animating = false;
   let animationFrameId = null;
   let pointPositions = [];
+  let tiempoInicio = null;
 
-  // Calcular posiciones de los puntos
+  // =========================
+  // CALCULAR POSICIONES
+  // =========================
   function getPointPositions() {
     const timelineRect = timeline.getBoundingClientRect();
-
     return Array.from(points).map((point) => {
       const pointRect = point.getBoundingClientRect();
-
       return pointRect.top - timelineRect.top + point.offsetHeight / 2;
     });
   }
@@ -191,46 +190,60 @@ document.addEventListener("DOMContentLoaded", () => {
   // =========================
   // ANIMAR TIMELINE
   // =========================
-  function animateLine() {
+  function animateLine(timestamp) {
     if (!animating) return;
 
-    // Altura actual de la timeline
+    // Guardar el momento exacto
+    // en el que comienza la animación
+    if (tiempoInicio === null) {
+      tiempoInicio = timestamp;
+    }
     const timelineHeight = timeline.offsetHeight;
 
-    currentHeight += speed;
+    // Tiempo transcurrido
+    const tiempoTranscurrido = timestamp - tiempoInicio;
 
-    if (currentHeight > timelineHeight) {
-      currentHeight = timelineHeight;
-    }
+    // Progreso de 0 a 1
+    const progreso = Math.min(tiempoTranscurrido / duracionAnimacion, 1);
 
+    // Convertir progreso en altura
+    currentHeight = timelineHeight * progreso;
     line.style.height = currentHeight + "px";
 
-    // Activar puntos conforme pasa la línea
+    // =========================
+    // ACTIVAR EVENTOS
+    // =========================
     pointPositions.forEach((pointPos, index) => {
       if (
         currentHeight >= pointPos &&
         !points[index].classList.contains("active")
       ) {
+        // Activar punto
         points[index].classList.add("active");
-
         const texto = items[index].querySelector(".evento-texto");
+
         const icono = items[index].querySelector(".evento-icono");
 
+        // Activar texto
         if (texto) {
           texto.classList.add("active");
         }
 
+        // Activar icono
         if (icono) {
           icono.classList.add("active");
         }
       }
     });
 
-    // Continuar animación
-    if (currentHeight < timelineHeight) {
+    // =========================
+    // CONTINUAR ANIMACIÓN
+    // =========================
+    if (progreso < 1) {
       animationFrameId = requestAnimationFrame(animateLine);
     } else {
       animationFrameId = null;
+      animating = false;
     }
   }
 
@@ -238,14 +251,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // REINICIAR TIMELINE
   // =========================
   function resetTimeline() {
-    // Detener animación anterior
+    // Detener animación pendiente
     if (animationFrameId !== null) {
       cancelAnimationFrame(animationFrameId);
       animationFrameId = null;
     }
 
+    // Reiniciar variables
     animating = false;
     currentHeight = 0;
+    tiempoInicio = null;
 
     // Reiniciar línea
     line.style.height = "0px";
@@ -259,11 +274,9 @@ document.addEventListener("DOMContentLoaded", () => {
     items.forEach((item) => {
       const texto = item.querySelector(".evento-texto");
       const icono = item.querySelector(".evento-icono");
-
       if (texto) {
         texto.classList.remove("active");
       }
-
       if (icono) {
         icono.classList.remove("active");
       }
@@ -281,17 +294,19 @@ document.addEventListener("DOMContentLoaded", () => {
       entries.forEach((entry) => {
         // Entró en pantalla
         if (entry.isIntersecting && !animating) {
-          // Asegurarnos de empezar desde cero
+          // Empezar desde cero
           currentHeight = 0;
+          tiempoInicio = null;
           line.style.height = "0px";
 
           // Recalcular posiciones
           pointPositions = getPointPositions();
 
+          // Activar animación
           animating = true;
 
-          // Iniciar animación
-          animateLine();
+          // Iniciar correctamente con timestamp
+          animationFrameId = requestAnimationFrame(animateLine);
         }
 
         // Salió de pantalla
@@ -301,7 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     },
     {
-      threshold: 0.3, // con 30% visible arranca
+      threshold: 0.3, // Arranca con 30% visible
     },
   );
   observer.observe(timeline);
