@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>XV Años - Sofia</title>
+  <meta name="description" content="Invitación digital a los XV años de Sofia." />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style-sofia-azul.css" />
+  <link rel="icon" type="image/png" href="assets/img/YolotlFest.png" />
+</head>
+
+<body>
+  <div class="glow-ambiental"></div>
+  <main id="mainContent" role="main">
+    <header>
+      <img src="assets/img/Portada I.png" alt="Foto de Portada Sofia" class="portada" loading="lazy" />
+    </header>
+
+    <section class="section musica fade-in" id="musicaSection" aria-label="Sección de música">
+      <div class="separator">
+        <span class="icono-titulo" aria-hidden="true">🎵</span>
+      </div>
+      <h2>Presiona la mariposa para escuchar mi canción.</h2>
+      <div class="music-controls">
+        <button id="btnPlayPause" aria-label="Reproducir música" type="button" class="heart-button">
+          <img id="mariposaMusica" src="assets/img/icons/mariposa.png" alt="" class="gif" />
+        </button>
+      </div>
+      <div class="music-progress-container">
+        <span id="musicCurrentTime">0:00</span>
+        <input type="range" id="musicProgress" value="0" min="0" max="100" step="1"
+          aria-label="Progreso de la canción" />
+        <span id="musicDuration" class="music-duration">-0:00</span>
+      </div>
+      <audio id="musicaFondo" loop preload="metadata">
+        <source id="musica" type="audio/mpeg" />
+        Tu navegador no soporta audio.
+      </audio>
+    </section>
+
+    <section class="section fade-in" aria-label="Mensaje bonito">
+      <div class="pergamino-container">
+        <img src="assets/img/Marco II.jpg" alt="Mensaje Bonito" class="imagen-mensaje" />
+      </div>
+    </section>
+
+    <section class="section countdown-container fade-in" aria-live="polite">
+      <div class="separator">
+        <span class="icono-titulo" aria-hidden="true">🕓</span>
+      </div>
+      <h2 class="countdown-title" id="fechaTitulo"></h2>
+      <p class="countdown-subtitle">Solo Faltan</p>
+      <div class="countdown" id="cuentaRegresiva">
+        <div class="countdown-item">
+          <span id="dias">000</span><small>D</small>
+        </div>
+        <div class="countdown-item">
+          <span id="horas">0:00</span><small>H</small>
+        </div>
+        <div class="countdown-item">
+          <span id="minutos">0:00</span><small>M</small>
+        </div>
+        <div class="countdown-item">
+          <span id="segundos">0:00</span><small>S</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="padres-padrinos section fade-in" aria-label="Presentación de padres y padrinos"
+      id="seccionPadresPadrinos">
+      <div class="contenido">
+        <div class="padres-gif">
+          <!-- <img src="assets/img/icons/familia.gif" alt="Decoración padres" loading="lazy" />
+        </div>
+        <h2 id="padresTitulo"></h2>
+        <p class="subtitulo nombres" id="padresNombres"></p>
+        <div id="bloquePadrinos">
+          <h2> & <br /></h2> -->
+        </div>
+        <h2 id="padrinosTitulo"></h2>
+        <p class="subtitulo nombres" id="padrinosNombres"></p>
+      </div>
+    </section>
+
+    <section class="section video fade-in" aria-label="Video de presentación" id="seccionVideo">
+      <div class="separator">
+        <span class="icono-titulo" aria-hidden="true">🎥</span>
+      </div>
+      <h2>Video de Presentación</h2>
+
+      <div class="video-local-container">
+        <iframe id="videoPresentacion" src="" frameborder="0" allow="autoplay" allowfullscreen class="video-iframe"
+          aria-label="Video de presentación">
+        </iframe>
+      </div>
+    </section>
+
+    <!-- REGALOS -->
+    <section class="section fade-in regalos-section" aria-label="Sugerencia de regalos" id="seccionRegalos">
+      <div class="separator">
+        <span class="icono-titulo" aria-hidden="true">🎁</span>
+      </div>
+
+      <h2 id="regalosTitulo"></h2>
+
+      <p class="regalos-mensaje" id="regalosMensaje"></p>
+
+      <div class="regalos-contenedor">
+
+        <!-- LLUVIA DE SOBRES -->
+        <article class="regalo-opcion" id="regaloLluvia">
+          <div class="regalo-icono" aria-hidden="true">💌</div>
+          <h3 id="lluviaTitulo"></h3>
+          <p id="lluviaDescripcion"></p>
+          <div class="lluvia-container" aria-hidden="true">
+            <div class="sobre"></div>
+            <div class="sobre"></div>
+            <div class="sobre"></div>
+            <div class="sobre"></div>
+            <div class="sobre"></div>
+          </div>
+        </article>
+
+        <!-- REGALOS FÍSICOS -->
+        <article class="regalo-opcion" id="regaloFisico">
+          <div class="regalo-icono" aria-hidden="true">🎀</div>
+          <h3 id="regalosFisicosTitulo"></h3>
+          <div class="regalos-tags" id="regalosFisicosLista"></div>
+        </article>
+
+        <!-- MESA DE REGALOS -->
+        <article class="regalo-opcion" id="regaloMesa">
+          <div class="regalo-icono" aria-hidden="true">🛍️</div>
+          <h3 id="mesaRegalosTitulo"></h3>
+          <div class="mesas-regalos" id="mesasRegalosLista"></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Hashtag -->
+    <section class="section fade-in hashtag-section" aria-label="Hashtag del evento">
+      <div class="separator">
+        <span class="icono-titulo" aria-hidden="true">📷</span>
+      </div>
+      <h2>Hashtag del evento</h2>
+      <p>Comparte tus fotos usando <strong id="hashtagTexto"></strong></p>
+      <p>¡Nos encantaría ver tus momentos especiales!</p>
+      <div class="flashes-container" aria-hidden="true">
+        <div class="flash"></div>
+        <div class="flash"></div>
+        <div class="flash"></div>
+        <div class="flash"></div>
+        <div class="flash"></div>
+        <div class="flash"></div>
+      </div>
+    </section>
+
+    <!-- CÓDIGO DE VESTIMENTA -->
+    <section class="section fade-in vestimenta" aria-label="Código de Vestimenta." id="seccionVestimenta">
+      <div class="separator">
+        <span class="icono-titulo" aria-hidden="true">👗</span>
+      </div>
+      <h2 id="vestimentaTitulo"></h2>
+      <div class="vestimenta-card">
+        <div class="vestimenta-iconos" aria-hidden="true">
+          <span>👗</span>
+          <span>✦</span>
+          <span>👔</span>
+        </div>
+        <h3 id="vestimentaCodigo"></h3>
+        <p id="vestimentaDescripcion"></p>
+        <div class="color-reservado">
+          <span class="color-reservado-etiqueta">
+            Color exclusivo (Reservado) para nuestra festejada.
+          </span>
+          <div class="color-reservado-info">
+            <span class="muestra-color-reservado" aria-hidden="true"></span>
+            <strong id="vestimentaColor"></strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- POLÍTICAS -->
+    <section class="section card-elegante fade-in" aria-label="Políticas del evento" id="seccionPoliticas">
+      <div class="separator">
+        <span class="icono-titulo" aria-hidden="true">📋</span>
+      </div>
+      <h2 id="politicasTitulo">Políticas del Evento</h2>
+      <ul id="politicasLista"></ul>
+    </section>
+
+    <section class="section fade-in itinerario" aria-label="Itinerario">
+      <div class="separator">
+        <span class="icono-titulo" aria-hidden="true">🗓️</span>
+      </div>
+      <h2>Itinerario</h2>
+      <ul class="timeline" id="timelineLista"></ul>
+    </section>
+
+    <!-- UBICACIÓN -->
+    <section class="section card-elegante fade-in" aria-label="Ubicación">
+      <div class="separator">
+        <span class="icono-titulo" aria-hidden="true">🗺️</span>
+      </div>
+      <h2>Ubicación</h2>
+      <p>
+        Haz clic en los siguientes enlaces para ver la ubicación del evento
+      </p>
+      <ul id="ubicacionesLista"></ul>
+    </section>
+
+    <!-- CONFIRMAR ASISTENCIA -->
+    <section class="section card-elegante fade-in" aria-label="Confirmar asistencia">
+      <div class="separator">
+        <span class="icono-titulo" aria-hidden="true">📱</span>
+      </div>
+      <h2>Confirmar Asistencia</h2>
+      <p>Haz clic abajo para confirmar tu asistencia por WhatsApp</p>
+      <a id="btnWhatsapp" class="btn-confirmar btn-link" href="#" aria-label="Confirmar asistencia por WhatsApp">
+        Confirmar Asistencia
+      </a>
+    </section>
+  </main>
+  <footer style="margin: 2rem 0 1rem 0; text-align: center; color: #6b7a99">
+    <small>¡Gracias por ser parte de este día tan especial!<br />© 2026
+      YolotlFest2026 . Todos los derechos reservados.</small>
+  </footer>
+  <script src="data/event.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
