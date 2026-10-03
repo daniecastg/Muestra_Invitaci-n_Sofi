@@ -46,7 +46,7 @@ const evento = {
   regalos: {
     titulo: "Sugerencia de Regalos",
     mensaje:
-      "Tu presencia hará de este día algo muy especial, siendo para mi el mejor regalo. Pero si deseas tener un detalle y no sabes qué regalarme...",
+      "Tu presencia hará de este día algo muy especial, siendo para mí el mejor regalo. Si deseas acompañarme con un detalle adicional, te comparto esta sugerencia con mucho cariño.",
 
     /* Lluvia de sobres */
     lluviaSobres: {
