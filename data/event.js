@@ -121,37 +121,37 @@ const evento = {
   ========================= */
   itinerario: [
     {
-      hora: "06:15 pm",
+      hora: "Por definir",
       nombre: "Misa Puntual",
       icono: "assets/img/icons/misa.gif",
       lado: "left",
     },
     {
-      hora: "08:00  pm",
+      hora: "Por definir",
       nombre: "Recepción",
       icono: "assets/img/icons/recepcion.gif",
       lado: "right",
     },
     {
-      hora: "09:30  pm",
+      hora: "Por definir",
       nombre: "Cena",
       icono: "assets/img/icons/cena.gif",
       lado: "left",
     },
     {
-      hora: "10:30 pm",
+      hora: "Por definir",
       nombre: "Vals",
       icono: "assets/img/icons/vals.gif",
       lado: "right",
     },
     {
-      hora: "01:30 am",
+      hora: "Por definir",
       nombre: "Pista de Baile",
       icono: "assets/img/icons/baile.gif",
       lado: "left",
     },
     {
-      hora: "03:00 am",
+      hora: "Por definir",
       nombre: "Fin",
       icono: "assets/img/icons/salida.gif",
       lado: "right",
