@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
   line.classList.add("line-progress");
   timeline.appendChild(line);
 
-  const speed = 0.8; // px por frame
+  const speed = 2; // px por frame
 
   let currentHeight = 0;
   let animating = false;
@@ -304,7 +304,6 @@ document.addEventListener("DOMContentLoaded", () => {
       threshold: 0.3, // con 30% visible arranca
     },
   );
-
   observer.observe(timeline);
 });
 
@@ -312,7 +311,6 @@ document.addEventListener("DOMContentLoaded", () => {
    UBICACIONES MÚLTIPLES
 ========================= */
 const listaUbicaciones = document.getElementById("ubicacionesLista");
-
 if (listaUbicaciones && evento.ubicaciones && evento.ubicaciones.length) {
   listaUbicaciones.innerHTML = evento.ubicaciones
     .map(
@@ -336,13 +334,11 @@ if (fechaTitulo && evento.fecha?.texto) {
    WHATSAPP DINÁMICO (BOTÓN)
 ========================= */
 const btnWhatsapp = document.getElementById("btnWhatsapp");
-
 if (btnWhatsapp && evento?.whatsapp) {
   const mensaje = evento.whatsapp.mensajeConfirmacion.replace(
     "{evento}",
     evento.nombre,
   );
-
   btnWhatsapp.href = `https://wa.me/${evento.whatsapp.telefono}?text=${encodeURIComponent(mensaje)}`;
 }
 
