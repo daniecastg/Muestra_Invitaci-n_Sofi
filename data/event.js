@@ -121,37 +121,37 @@ const evento = {
   ========================= */
   itinerario: [
     {
-      hora: "Por definir",
+      hora: "17:00",
       nombre: "Misa Puntual",
       icono: "assets/img/icons/misa.gif",
       lado: "left",
     },
     {
-      hora: "Por definir",
+      hora: "18:00",
       nombre: "Recepción",
       icono: "assets/img/icons/recepcion.gif",
       lado: "right",
     },
     {
-      hora: "Por definir",
+      hora: "19:30",
       nombre: "Cena",
       icono: "assets/img/icons/cena.gif",
       lado: "left",
     },
     {
-      hora: "Por definir",
+      hora: "22:00",
       nombre: "Vals",
       icono: "assets/img/icons/vals.gif",
       lado: "right",
     },
     {
-      hora: "Por definir",
+      hora: "22:30",
       nombre: "Pista de Baile",
       icono: "assets/img/icons/baile.gif",
       lado: "left",
-    },
-    {
-      hora: "Por definir",
+    }, 
+    { 
+      hora: "",
       nombre: "Fin",
       icono: "assets/img/icons/salida.gif",
       lado: "right",
@@ -176,7 +176,7 @@ const evento = {
     titulo: "Políticas del evento",
     reglas: [
       "Llegar puntuales",
-      "Queda estrictamente prohibido fumar en el interior del evento",
+      "Queda estrictamente prohibido fumar en el interior de la carpa",
     ],
   },
 
